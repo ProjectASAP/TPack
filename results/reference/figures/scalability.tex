@@ -1,0 +1,20 @@
+\begin{table}[t]
+    \centering
+    \caption{Scalability on Uber. Ratio = Raw\,(gz)\,/\,Model\,(gz).}
+    \label{tab:scalability}
+    \footnotesize
+    \setlength{\tabcolsep}{3.5pt}
+    \begin{tabular}{rr rr rr rr}
+        \toprule
+        & & \multicolumn{2}{c}{Raw size} & \multicolumn{2}{c}{Model size} & & \\
+        \cmidrule(lr){3-4} \cmidrule(lr){5-6}
+        Traces & Spans & plain & gz & plain & gz & Ratio & Time\,(s) \\
+        \midrule
+        10K & 10M & 720\,MB & 230\,MB & 20\,MB & 9\,MB & 26$\times$ & 12 \\
+        20K & 19M & 1.5\,GB & 465\,MB & 30\,MB & 13\,MB & 36$\times$ & 22 \\
+        50K & 47M & 3.5\,GB & 1.1\,GB & 52\,MB & 22\,MB & 52$\times$ & 41 \\
+        100K & 94M & 7.1\,GB & 2.3\,GB & 79\,MB & 32\,MB & 71$\times$ & 74 \\
+        200K & 186M & 14\,GB & 4.5\,GB & 119\,MB & 47\,MB & 96$\times$ & 133 \\
+        \bottomrule
+    \end{tabular}
+\end{table}

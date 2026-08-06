@@ -1,0 +1,10 @@
+name: tpack_gmm5
+primary_attributes:
+  - service.name
+  - operation.name
+  - status.code
+  - grpc.status
+metadata_predictor: statistical
+offset_value: ratio
+offset_model: regression
+max_gmm_components: 5

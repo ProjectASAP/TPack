@@ -1,0 +1,30 @@
+name: tpack
+primary_attributes:
+  - service.name
+  - span.kind
+  - operation.name
+  - status.code
+  - upstream_cluster
+  - upstream_cluster.name
+  - http.method
+  - rpc.system
+  - rpc.grpc.status_code
+dependent_attributes:
+  - http.url
+  - net.peer.port
+  - http.target
+  - next.span_name
+  - net.peer.name
+  - server.port
+  - server.address
+  - rpc.method
+  - rpc.service
+  - http.status_code
+  - peer.address
+  - next.span_signature
+  - response_flags
+  - http.protocol
+  - component
+metadata_predictor: statistical
+offset_value: ratio
+offset_model: regression

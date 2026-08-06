@@ -1,0 +1,11 @@
+name: tpack_uber_template
+primary_attributes:
+  - service.name
+  - operation.name
+  - status.code
+  - grpc.status
+dependent_attributes: []
+metadata_predictor: statistical
+topology_mode: template
+offset_value: ratio
+offset_model: regression

@@ -1,0 +1,13 @@
+apiVersion: 1
+
+datasources:
+  - name: Tempo
+    uid: tpack-traces
+    type: tempo
+    url: http://tempo-tpack:3200
+    access: proxy
+    editable: true
+    isDefault: true
+    jsonData:
+      streamingEnabled:
+        search: true

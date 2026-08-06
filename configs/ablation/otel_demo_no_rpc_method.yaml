@@ -1,0 +1,30 @@
+name: tpack_otel_demo_no_rpc_method
+primary_attributes:
+- service.name
+- span.kind
+- operation.name
+- status.code
+- http.status_code
+- server.address
+- server.port
+- rpc.service
+- next.span_name
+- peer.address
+- next.span_signature
+- rpc.system
+- rpc.grpc.status_code
+- http.method
+- http.target
+- upstream_cluster
+- upstream_cluster.name
+- component
+- response_flags
+- http.protocol
+- net.peer.name
+dependent_attributes:
+- http.url
+- net.peer.port
+- rpc.method
+metadata_predictor: statistical
+offset_value: ratio
+offset_model: regression

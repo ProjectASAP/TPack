@@ -1,0 +1,25 @@
+# Build artifacts
+/tpack-eval
+/cmd/tpack-eval/tpack-eval
+/cmd/otelcol-tpack/otelcol-tpack
+*.test
+
+# Python
+.venv/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+*.egg-info/
+*.pyc
+
+# Datasets and outputs (populated by experiments — see docs/DATASETS.md)
+/data/
+/output/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Go workspace state
+/go.work.sum

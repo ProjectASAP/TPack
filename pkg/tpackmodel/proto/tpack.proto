@@ -1,0 +1,172 @@
+syntax = "proto3";
+
+package tpack;
+
+option go_package = "github.com/ProjectASAP/TPack/pkg/tpackmodel/proto";
+
+// Trace type for stratified sampling
+enum TraceType {
+  NORMAL = 0;  // Normal trace (no ERROR spans)
+  ERROR = 1;   // Error trace (contains at least one span with status.code=2)
+}
+
+// Main message containing all TPack models
+message TPackModels {
+  // Node vocabulary for cross-language compat
+  repeated string node_vocabulary = 1;
+
+  // Embedded config for self-describing archives
+  TPackConfig config = 2;
+
+  // Timing metadata from training batch (for pacing trace emission)
+  int64 min_start_time_us = 3;
+  int64 max_start_time_us = 4;
+  int32 trace_count = 5;
+
+  // Models
+  int32 max_nodes_count = 6;
+  repeated RootCountModel root_models = 7;
+  repeated TopologyModel topology_models = 8;
+  repeated RootDurationModel root_duration_models = 9;
+  repeated SpanDurationBounds span_duration_bounds = 10;
+  repeated SpanGapBounds span_gap_bounds = 11;
+  repeated StatisticalDependentAttributeModel statistical_dependent_attributes = 12;
+
+  // Dynamic dependent attributes (e.g. ["http.status_code"])
+  repeated string dependent_attributes = 13;
+  repeated DependentAttributeVocab dependent_attribute_vocabs = 14;
+
+  // Primary attributes that form node identity (e.g. ["service.name", "span.kind", ...])
+  repeated string primary_attributes = 15;
+
+  // Delta vocabulary encoding: cumulative vocab size after this bucket's entries.
+  // == 0: legacy mode, node_vocabulary is the full vocabulary.
+  // > 0: delta mode, node_vocabulary contains only new entries at indices
+  //      [cumulative_vocab_size - len(node_vocabulary), cumulative_vocab_size).
+  int32 cumulative_vocab_size = 16;
+
+  // Trace templates (used when topology_mode = "template")
+  repeated TraceTemplateProto trace_templates = 17;
+}
+
+// Per-column vocabulary for a dynamic dependent attribute.
+message DependentAttributeVocab {
+  string column_name = 1;
+  repeated string values = 2;
+}
+
+// Configuration for TPack algorithm
+message TPackConfig {
+  int32 max_depth = 1;
+  int32 max_children = 2;
+  int32 max_gmm_components = 3;
+  int32 min_samples_for_gmm = 4;
+  int32 reject_sampling_max_attempts = 5;
+  bool reject_sampling_enabled = 6;
+  bool stratified_sampling = 7;
+  int32 random_seed = 8;
+  string offset_value = 9;          // "ratio" or "absolute"
+  string offset_model = 10;         // "regression" or "percentile"
+  bool use_duration_bounds = 11;    // Clamp generated durations/gaps to observed bounds
+  string topology_mode = 12;        // "edge" (default) or "template"
+}
+
+// Node feature representation
+message NodeFeature {
+  int32 node_idx = 1;      // Index into the shared node encoder vocabulary
+  int32 child_idx = 2;     // Index of this node among its parent's children (sorted by startTime)
+  int32 child_count = 3;   // Number of children this node has
+}
+
+// Root count model: maps node feature to occurrence count
+message RootCountModel {
+  NodeFeature feature = 1;
+  int32 count = 2;
+  TraceType trace_type = 3;  // Normal or Error trace
+}
+
+// Topology model: maps parent-child feature pair to edge count
+message TopologyModel {
+  NodeFeature parent_feature = 1;
+  NodeFeature child_feature = 2;
+  uint64 count = 3;
+  TraceType trace_type = 4;  // Normal or Error trace
+}
+
+// Root duration model: maps node feature to Gaussian mixture
+message RootDurationModel {
+  NodeFeature feature = 1;
+  GaussianMixtureParams distribution = 2;
+  double min_duration = 3;  // Original minimum duration for bounds checking
+  double max_duration = 4;  // Original maximum duration for bounds checking
+}
+
+// Span duration bounds: maps node feature to min/max duration bounds
+message SpanDurationBounds {
+  NodeFeature feature = 1;
+  double min_duration = 2;  // Minimum duration observed for this feature
+  double max_duration = 3;  // Maximum duration observed for this feature
+}
+
+// Span gap bounds: maps node feature to min/max gap_from_parent bounds
+message SpanGapBounds {
+  NodeFeature feature = 1;
+  double min_gap = 2;  // Minimum gap_from_parent observed for this feature
+  double max_gap = 3;  // Maximum gap_from_parent observed for this feature
+}
+
+// Gaussian mixture model parameters
+message GaussianMixtureParams {
+  repeated double weights = 1;     // Component weights (sum to 1)
+  repeated double means = 2;       // Component means
+  repeated double variances = 3;   // Component variances (for 1D case)
+  int32 n_components = 4;          // Number of components
+}
+
+// Statistical dependent-attribute model: linear regression per (parent, child) node pair
+// Conditions gap_ratio and duration_ratio on log(parentDuration+1) and normalizedChildIdx
+message StatisticalDependentAttributeModel {
+  int32 parent_node_idx = 1;
+  int32 child_node_idx = 2;
+
+  // Sample count (for weighting/confidence)
+  int32 sample_count = 3;
+
+  // Per-column categorical probability distributions (one entry per dependent attribute)
+  repeated DependentAttributeProbs dependent_attribute_probs = 4;
+
+  // Gap regression: gapRatio = gap_beta0 + gap_beta1*logDur + gap_beta2*childIdx + N(0, gap_residual_std)
+  double gap_beta0 = 5;
+  double gap_beta1 = 6;
+  double gap_beta2 = 7;
+  double gap_residual_std = 8;
+
+  // Duration regression: durRatio = dur_beta0 + dur_beta1*logDur + dur_beta2*childIdx + N(0, dur_residual_std)
+  double dur_beta0 = 9;
+  double dur_beta1 = 10;
+  double dur_beta2 = 11;
+  double dur_residual_std = 12;
+
+  // Percentile fields (used when offset_param = "percentile")
+  // 21 values each: p0,p5,p10,...,p95,p100 in absolute µs
+  repeated double gap_percentiles = 13;
+  repeated double dur_percentiles = 14;
+
+  // Memorized raw (gapRatio, durRatio) pairs for small groups (≤20 samples)
+  repeated double memorized_gaps = 15;
+  repeated double memorized_durs = 16;
+}
+
+// Categorical probabilities for one dependent attribute within a node-pair's stats.
+message DependentAttributeProbs {
+  repeated double probs = 1;
+}
+
+// Trace template: a full tree topology stored as a BFS-ordered node sequence.
+// Used when topology_mode = "template" (ablation baseline).
+message TraceTemplateProto {
+  repeated NodeFeature nodes = 1;       // BFS-ordered nodes, index 0 = root
+  repeated int32 parent_indices = 2;    // parent index in nodes array, -1 for root
+  uint64 count = 3;                     // number of traces matching this template
+  TraceType trace_type = 4;             // NORMAL or ERROR
+}

@@ -1,0 +1,49 @@
+Aggregating 90 reports
+
+============================================================
+  tpack_default  (RE2-OB_tpack_default_1)
+============================================================
+  Fidelity scores: 75888 queries
+    duration      n=53088  mean=80.2  min=0.5  max=100.0
+    rate          n=17696  mean=99.6  min=40.0  max=100.0
+    error         n= 462  mean=93.9  min=40.0  max=100.0
+    graph         n=2231  mean=99.2  min=0.0  max=100.0
+    graph_binary  n=2231  mean=99.5  min=0.0  max=100.0
+    trace_rca     n=  90  mean=98.9  min=0.0  max=100.0
+    micro_rank    n=  90  mean=100.0  min=100.0  max=100.0
+  Cost breakdown (90 experiments):
+    size       148 KB
+    time       1.6 s (CPU)
+    cost       $0.0001
+
+============================================================
+  1:{rate} Head  (RE2-OB_head_1_1)
+============================================================
+  Fidelity scores: 75888 queries
+    duration      n=53088  mean=100.0  min=100.0  max=100.0
+    rate          n=17696  mean=100.0  min=100.0  max=100.0
+    error         n= 462  mean=100.0  min=100.0  max=100.0
+    graph         n=2231  mean=100.0  min=100.0  max=100.0
+    graph_binary  n=2231  mean=100.0  min=100.0  max=100.0
+    trace_rca     n=  90  mean=98.9  min=0.0  max=100.0
+    micro_rank    n=  90  mean=100.0  min=100.0  max=100.0
+  Cost breakdown (270 experiments):
+    size       4.1 MB
+    time       0.1 s (CPU)
+    cost       $0.0004
+
+============================================================
+  1:{rate} Head  (RE2-OB_head_50_1)
+============================================================
+  Fidelity scores: 75888 queries
+    duration      n=53088  mean=79.3  min=0.0  max=100.0
+    rate          n=17696  mean=72.7  min=0.0  max=95.3
+    error         n= 462  mean=7.3  min=0.0  max=66.7
+    graph         n=2231  mean=68.0  min=0.0  max=95.1
+    graph_binary  n=2231  mean=66.2  min=0.0  max=95.5
+    trace_rca     n=  90  mean=90.0  min=0.0  max=100.0
+    micro_rank    n=  90  mean=96.7  min=0.0  max=100.0
+  Cost breakdown (180 experiments):
+    size       132 KB
+    time       0.0 s (CPU)
+    cost       $0.0000

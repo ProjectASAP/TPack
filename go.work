@@ -1,0 +1,9 @@
+go 1.25.0
+
+use (
+	./cmd/otelcol-tpack
+	./cmd/tpack-eval
+	./exporter/tpackexporter
+	./pkg/tpackmodel
+	./receiver/tpackreceiver
+)

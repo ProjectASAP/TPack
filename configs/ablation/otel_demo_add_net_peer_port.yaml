@@ -1,0 +1,32 @@
+name: tpack_otel_demo_add_net_peer_port
+# Node-ablation "add-one-in" variant: move net.peer.port from metadata to
+# primary_attributes to see what the extra feature buys.
+primary_attributes:
+  - service.name
+  - span.kind
+  - operation.name
+  - status.code
+  - http.status_code
+  - server.address
+  - server.port
+  - rpc.method
+  - rpc.service
+  - next.span_name
+  - peer.address
+  - next.span_signature
+  - rpc.system
+  - rpc.grpc.status_code
+  - http.method
+  - http.target
+  - upstream_cluster
+  - upstream_cluster.name
+  - component
+  - response_flags
+  - http.protocol
+  - net.peer.name
+  - net.peer.port
+dependent_attributes:
+  - http.url
+metadata_predictor: statistical
+offset_value: ratio
+offset_model: regression

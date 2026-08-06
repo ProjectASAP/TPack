@@ -1,0 +1,67 @@
+[
+  {
+    "traces": 10000,
+    "spans_millions": 9.5,
+    "compression_seconds": 9.8,
+    "decompression_seconds": 2.2,
+    "total_seconds": 12.0,
+    "raw_bytes": 720291944,
+    "raw_gz_bytes": 230366042,
+    "raw_gzip_compress_seconds": 13.1,
+    "raw_gzip_decompress_seconds": 0.8,
+    "model_raw_bytes": 20148980,
+    "model_gz_bytes": 8936665
+  },
+  {
+    "traces": 20000,
+    "spans_millions": 19.3,
+    "compression_seconds": 15.8,
+    "decompression_seconds": 6.2,
+    "total_seconds": 22.0,
+    "raw_bytes": 1452551975,
+    "raw_gz_bytes": 465280907,
+    "raw_gzip_compress_seconds": 22.2,
+    "raw_gzip_decompress_seconds": 1.4,
+    "model_raw_bytes": 30117629,
+    "model_gz_bytes": 13038550
+  },
+  {
+    "traces": 50000,
+    "spans_millions": 46.9,
+    "compression_seconds": 31.9,
+    "decompression_seconds": 8.7,
+    "total_seconds": 40.6,
+    "raw_bytes": 3540049648,
+    "raw_gz_bytes": 1133537875,
+    "raw_gzip_compress_seconds": 57.4,
+    "raw_gzip_decompress_seconds": 3.5,
+    "model_raw_bytes": 52249952,
+    "model_gz_bytes": 21831374
+  },
+  {
+    "traces": 100000,
+    "spans_millions": 94.3,
+    "compression_seconds": 56.9,
+    "decompression_seconds": 17.1,
+    "total_seconds": 74.0,
+    "raw_bytes": 7110104053,
+    "raw_gz_bytes": 2277992751,
+    "raw_gzip_compress_seconds": 111.4,
+    "raw_gzip_decompress_seconds": 6.8,
+    "model_raw_bytes": 79237728,
+    "model_gz_bytes": 32188191
+  },
+  {
+    "traces": 200000,
+    "spans_millions": 186.2,
+    "compression_seconds": 103.0,
+    "decompression_seconds": 29.5,
+    "total_seconds": 132.6,
+    "raw_bytes": 14049597458,
+    "raw_gz_bytes": 4501820811,
+    "raw_gzip_compress_seconds": 216.7,
+    "raw_gzip_decompress_seconds": 13.8,
+    "model_raw_bytes": 118718125,
+    "model_gz_bytes": 47069775
+  }
+]

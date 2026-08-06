@@ -1,0 +1,31 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+
+exporters:
+  tpack:
+    flush_interval_seconds: 60
+    max_buffered_traces: 50000
+    model_server_port: 9090
+    primary_attributes:
+      - service.name
+      - span.kind
+      - operation.name
+      - status.code
+    dependent_attributes:
+      - http.status_code
+  otlp_grpc:
+    endpoint: tempo-original:4317
+    tls:
+      insecure: true
+
+service:
+  telemetry:
+    logs:
+      level: info
+  pipelines:
+    traces/compress:
+      receivers: [otlp]
+      exporters: [tpack, otlp_grpc]

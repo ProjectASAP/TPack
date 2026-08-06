@@ -1,0 +1,51 @@
+[project]
+name = "TPack"
+version = "0.1.0"
+description = "TPack: trace compression via statistical model regeneration"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.13"
+dependencies = [
+  "matplotlib>=3.10.3",
+  "numpy>=2.2.6",
+  "scikit-learn>=1.5.0",
+  "seaborn>=0.13.2",
+  "networkx>=3.0",
+  "shap>=0.46.0",
+  "numba>=0.61",
+  "xgboost>=2.1.0",
+  "torch>=2.0",
+  "orjson>=3.10",
+  "pyyaml>=6.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/ProjectASAP/TPack"
+Repository = "https://github.com/ProjectASAP/TPack"
+Issues = "https://github.com/ProjectASAP/TPack/issues"
+
+[project.scripts]
+compare_graphs = "tpack_eval.bin.compare_graphs:main"
+scorecard = "tpack_eval.bin.scorecard:main"
+anomaly_summary = "tpack_eval.bin.anomaly_summary:main"
+failure_importance = "tpack_eval.bin.failure_importance:main"
+failure_distributions = "tpack_eval.bin.failure_distributions:main"
+
+draw = "tpack_eval.bin.draw:main"
+plot_paper = "tpack_eval.bin.plot_paper:main"
+plot_fidelity_dist = "tpack_eval.bin.plot_fidelity_dist:main"
+collect_scalability = "tpack_eval.bin.collect_scalability:main"
+collect_graph_ablation = "tpack_eval.bin.collect_graph_ablation:main"
+generate_feature_ablation_configs = "tpack_eval.bin.generate_feature_ablation_configs:main"
+tvae_train = "tpack_eval.baseline_tvae.run:main"
+tvae_reconstruct = "tpack_eval.baseline_tvae.run:main_reconstruct"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["tpack_eval"]
+
+[dependency-groups]
+dev = ["ruff>=0.11.10"]

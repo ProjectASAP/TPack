@@ -1,0 +1,78 @@
+services:
+  otelcol-edge:
+    build:
+      context: ../..
+    command: ["--config=file:/etc/otelcol/config.yaml"]
+    volumes:
+      - ./collector-edge.yaml:/etc/otelcol/config.yaml:ro
+    ports:
+      - "4317:4317"   # OTLP ingest
+      - "9090:9090"   # Model streaming gRPC
+    depends_on:
+      - tempo-original
+
+  otelcol-backend:
+    build:
+      context: ../..
+    command: ["--config=file:/etc/otelcol/config.yaml"]
+    volumes:
+      - ./collector-backend.yaml:/etc/otelcol/config.yaml:ro
+    depends_on:
+      - otelcol-edge
+      - tempo-tpack
+
+  tempo-original:
+    image: grafana/tempo:2.10.0
+    ports:
+      - "3200:3200"
+    volumes:
+      - ./tempo-config.yaml:/etc/tempo/config.yaml:ro
+    command: ["-config.file=/etc/tempo/config.yaml"]
+
+  tempo-tpack:
+    image: grafana/tempo:2.10.0
+    ports:
+      - "3201:3200"
+    volumes:
+      - ./tempo-config.yaml:/etc/tempo/config.yaml:ro
+    command: ["-config.file=/etc/tempo/config.yaml"]
+
+  grafana-original:
+    image: grafana/grafana:12.3.1
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH=/var/lib/grafana/dashboards/traces.json
+    volumes:
+      - ./grafana-original/provisioning:/etc/grafana/provisioning:ro
+      - ./dashboards:/var/lib/grafana/dashboards:ro
+    depends_on:
+      - tempo-original
+
+  grafana-tpack:
+    image: grafana/grafana:12.3.1
+    ports:
+      - "3002:3000"
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH=/var/lib/grafana/dashboards/traces.json
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./dashboards:/var/lib/grafana/dashboards:ro
+    depends_on:
+      - tempo-tpack
+
+  tracegen:
+    build:
+      context: ./tracegen
+    command:
+      - --endpoint=otelcol-edge:4317
+      - --rate=5
+      - --duration=1h
+      - --max-depth=4
+      - --error-rate=0.05
+    depends_on:
+      - otelcol-edge

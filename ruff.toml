@@ -1,0 +1,149 @@
+# Ruff configuration for TPack
+# See: https://docs.astral.sh/ruff/configuration/
+
+# General settings
+line-length = 88
+target-version = "py313"
+
+[lint]
+# Enable comprehensive rule sets
+select = [
+  "E",    # pycodestyle errors
+  "W",    # pycodestyle warnings  
+  "F",    # pyflakes
+  "I",    # isort (import sorting)
+  "N",    # pep8-naming
+  "UP",   # pyupgrade (modernize Python code)
+  "YTT",  # flake8-2020 (sys.version_info comparisons)
+  "S",    # flake8-bandit (security)
+  "BLE",  # flake8-blind-except
+  "B",    # flake8-bugbear
+  "A",    # flake8-builtins
+  "COM",  # flake8-commas
+  "C4",   # flake8-comprehensions
+  "DTZ",  # flake8-datetimez
+  "EM",   # flake8-errmsg
+  "FA",   # flake8-future-annotations
+  "ISC",  # flake8-implicit-str-concat
+  "ICN",  # flake8-import-conventions
+  "G",    # flake8-logging-format
+  "INP",  # flake8-no-pep420
+  "PIE",  # flake8-pie
+  "T20",  # flake8-print
+  "PT",   # flake8-pytest-style
+  "Q",    # flake8-quotes
+  "RSE",  # flake8-raise
+  "RET",  # flake8-return
+  "SLF",  # flake8-self
+  "SIM",  # flake8-simplify
+  "TID",  # flake8-tidy-imports
+  "TCH",  # flake8-type-checking
+  "ARG",  # flake8-unused-arguments
+  "PTH",  # flake8-use-pathlib
+  "ERA",  # eradicate (remove commented code)
+  "PD",   # pandas-vet (pandas best practices)
+  "PGH",  # pygrep-hooks
+  "PL",   # pylint
+  "TRY",  # tryceratops
+  "FLY",  # flynt (f-string conversion)
+  "NPY",  # numpy-specific rules
+  "PERF", # performance anti-patterns
+  "RUF",  # ruff-specific rules
+]
+
+# Disable specific rules that might be too strict for this project
+ignore = [
+  "E501",    # Line too long (handled by formatter)
+  "COM812",  # Trailing comma missing (conflicts with formatter)
+  "ISC001",  # Single line implicit string concatenation (conflicts with formatter)
+  "S101",    # Use of assert (common in data science/testing)
+  "T201",    # Print statements (common in CLI tools)
+  "G004",    # Logging f-string (sometimes clearer than .format())
+  "EM101",   # String literal in exception (sometimes clearer)
+  "EM102",   # f-string in exception (sometimes clearer)
+  "TRY003",  # Long exception messages (sometimes necessary)
+  "PLR0913", # Too many arguments (common in data science functions)
+  "PLR0915", # Too many statements (common in CLI/data processing)
+  "PLR2004", # Magic value comparison (common with ML hyperparameters)
+  "PD901",   # df as variable name (very common in pandas)
+  "S603",    # subprocess without shell=True check (context-dependent)
+  "S607",    # subprocess with shell=True (context-dependent)
+  "ARG001",  # Unused function argument (common with interface implementations)
+  "ARG002",  # Unused method argument (common with interface implementations)
+]
+
+# Per-file-type ignores
+[lint.per-file-ignores]
+# Test files
+"test_*.py" = ["S101", "PLR2004", "ARG001", "ARG002"]
+"**/test_*.py" = ["S101", "PLR2004", "ARG001", "ARG002"]
+"tests/**/*.py" = ["S101", "PLR2004", "ARG001", "ARG002"]
+
+# CLI scripts can have print statements and sys.exit
+"src/bin/*.py" = ["T201", "PLR0912", "PLR0915"]
+
+# Evaluation scripts often have complex logic and many arguments
+"src/evaluators/*.py" = ["PLR0913", "PLR0912", "C901"]
+"src/reports/*.py" = ["PLR0913", "PLR0912"]
+
+# Compressor implementations may be complex
+"src/compressors/**/*.py" = ["PLR0913", "PLR0912", "C901"]
+
+[lint.isort]
+# Import sorting configuration
+known-first-party = ["src"]
+known-local-folder = ["src"]
+lines-after-imports = 2
+split-on-trailing-comma = true
+combine-as-imports = true
+
+# Group imports: standard library, third-party, first-party, local
+section-order = [
+  "future",
+  "standard-library",
+  "third-party",
+  "first-party",
+  "local-folder",
+]
+
+[lint.pylint]
+# Pylint-specific settings
+max-args = 8        # Allow up to 8 arguments (data science functions)
+max-branches = 15   # Allow more complex branching logic
+max-returns = 8     # Allow multiple return points
+max-statements = 60 # Allow longer functions for data processing
+
+[lint.mccabe]
+# Complexity checking
+max-complexity = 12 # Allow moderately complex functions
+
+[format]
+# Formatting settings (compatible with Black)
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+
+# Format docstrings
+docstring-code-format = true
+docstring-code-line-length = 72
+
+[lint.flake8-quotes]
+# Consistent quote usage
+inline-quotes = "double"
+multiline-quotes = "double"
+
+[lint.flake8-builtins]
+# Allow some common builtin shadows in data science contexts
+builtins-ignorelist = ["id", "input", "filter", "map"]
+
+[lint.flake8-import-conventions]
+# Standard import aliases
+[lint.flake8-import-conventions.aliases]
+"pandas" = "pd"
+"numpy" = "np"
+"matplotlib.pyplot" = "plt"
+"seaborn" = "sns"
+
+[lint.flake8-type-checking]
+# Type checking imports
+runtime-evaluated-base-classes = ["pydantic.BaseModel"]

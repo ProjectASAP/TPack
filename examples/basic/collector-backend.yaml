@@ -1,0 +1,20 @@
+receivers:
+  tpack:
+    source_type: grpc
+    model_server_endpoint: otelcol-edge:9090
+    continuous_generation: true
+
+exporters:
+  otlp_grpc:
+    endpoint: tempo-tpack:4317
+    tls:
+      insecure: true
+
+service:
+  telemetry:
+    logs:
+      level: info
+  pipelines:
+    traces/decompress:
+      receivers: [tpack]
+      exporters: [otlp_grpc]

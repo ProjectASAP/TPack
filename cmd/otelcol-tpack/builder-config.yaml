@@ -1,0 +1,17 @@
+dist:
+  name: otelcol-tpack
+  description: OpenTelemetry Collector with TPack compressor/decompressor
+  output_path: ./otelcol-tpack
+
+exporters:
+  - gomod: github.com/ProjectASAP/TPack/exporter/tpackexporter v0.0.0
+  - gomod: go.opentelemetry.io/collector/exporter/otlpexporter v0.120.0
+
+receivers:
+  - gomod: github.com/ProjectASAP/TPack/receiver/tpackreceiver v0.0.0
+  - gomod: go.opentelemetry.io/collector/receiver/otlpreceiver v0.120.0
+
+replaces:
+  - github.com/ProjectASAP/TPack/exporter/tpackexporter => ../../exporter/tpackexporter
+  - github.com/ProjectASAP/TPack/receiver/tpackreceiver => ../../receiver/tpackreceiver
+  - github.com/ProjectASAP/TPack/pkg/tpackmodel => ../../pkg/tpackmodel

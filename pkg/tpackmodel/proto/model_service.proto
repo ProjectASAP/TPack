@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package tpack;
+
+option go_package = "github.com/ProjectASAP/TPack/pkg/tpackmodel/proto";
+
+// ModelService provides server-streaming of trained TPack models.
+// The exporter runs the server; receivers subscribe as clients.
+service ModelService {
+  // StreamModels subscribes to model updates. The server pushes a new
+  // ModelUpdate each time the exporter finishes a training flush.
+  rpc StreamModels(StreamModelsRequest) returns (stream ModelUpdate);
+}
+
+message StreamModelsRequest {}
+
+message ModelUpdate {
+  bytes model_data = 1;      // Serialized TPackModels protobuf
+  int64 trained_at_unix = 2; // Unix timestamp when training completed
+  int32 trace_count = 3;     // Number of traces used in this training batch
+}

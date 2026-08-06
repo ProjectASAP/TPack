@@ -1,0 +1,170 @@
+{
+  "sizes": [
+    1000,
+    2000,
+    5000,
+    10000,
+    20000,
+    50000
+  ],
+  "edge": [
+    {
+      "N": 1000,
+      "fidelity": 71.00965531271547,
+      "fidelity_std": 0.0,
+      "cost": 0.0005197376562384712,
+      "cost_std": 0.0,
+      "cost_per_bspans": 0.48348228653572983,
+      "cost_per_bspans_std": 0.0,
+      "seeds": 1,
+      "spans": 1074988,
+      "templates": 995,
+      "edges": 59516
+    },
+    {
+      "N": 2000,
+      "fidelity": 74.37751276134853,
+      "fidelity_std": 0.0,
+      "cost": 0.0006557420507875761,
+      "cost_std": 0.0,
+      "cost_per_bspans": 0.34030774197825436,
+      "cost_per_bspans_std": 0.0,
+      "seeds": 1,
+      "spans": 1926909,
+      "templates": 1880,
+      "edges": 80827
+    },
+    {
+      "N": 5000,
+      "fidelity": 73.76486341283058,
+      "fidelity_std": 0.0,
+      "cost": 0.0010974049035268572,
+      "cost_std": 0.0,
+      "cost_per_bspans": 0.23439061457671947,
+      "cost_per_bspans_std": 0.0,
+      "seeds": 1,
+      "spans": 4681949,
+      "templates": 4499,
+      "edges": 115122
+    },
+    {
+      "N": 10000,
+      "fidelity": 75.99161772681703,
+      "fidelity_std": 0.0,
+      "cost": 0.0017879920268726295,
+      "cost_std": 0.0,
+      "cost_per_bspans": 0.18724529493020942,
+      "cost_per_bspans_std": 0.0,
+      "seeds": 1,
+      "spans": 9548929,
+      "templates": 8647,
+      "edges": 142745
+    },
+    {
+      "N": 20000,
+      "fidelity": 78.61297930816701,
+      "fidelity_std": 0.0,
+      "cost": 0.002767053064466037,
+      "cost_std": 0.0,
+      "cost_per_bspans": 0.1436443680997277,
+      "cost_per_bspans_std": 0.0,
+      "seeds": 1,
+      "spans": 19263220,
+      "templates": 16542,
+      "edges": 175249
+    },
+    {
+      "N": 50000,
+      "fidelity": 79.19020018950768,
+      "fidelity_std": 0.0,
+      "cost": 0.00529818702721174,
+      "cost_std": 0.0,
+      "cost_per_bspans": 0.11290020975751414,
+      "cost_per_bspans_std": 0.0,
+      "seeds": 1,
+      "spans": 46928053,
+      "templates": 38523,
+      "edges": 233215
+    }
+  ],
+  "template": [
+    {
+      "N": 1000,
+      "fidelity": 88.66006420688399,
+      "fidelity_std": 0.0,
+      "cost": 0.0007568288660644055,
+      "cost_std": 0.0,
+      "cost_per_bspans": 0.7040347111450598,
+      "cost_per_bspans_std": 0.0,
+      "seeds": 1,
+      "spans": 1074988,
+      "templates": 995,
+      "edges": 59516
+    },
+    {
+      "N": 2000,
+      "fidelity": 88.81939297201689,
+      "fidelity_std": 0.0,
+      "cost": 0.0011666699408730296,
+      "cost_std": 0.0,
+      "cost_per_bspans": 0.6054618774799586,
+      "cost_per_bspans_std": 0.0,
+      "seeds": 1,
+      "spans": 1926909,
+      "templates": 1880,
+      "edges": 80827
+    },
+    {
+      "N": 5000,
+      "fidelity": 88.90287292436017,
+      "fidelity_std": 0.0,
+      "cost": 0.0025618439334211245,
+      "cost_std": 0.0,
+      "cost_per_bspans": 0.547174677345081,
+      "cost_per_bspans_std": 0.0,
+      "seeds": 1,
+      "spans": 4681949,
+      "templates": 4499,
+      "edges": 115122
+    },
+    {
+      "N": 10000,
+      "fidelity": 89.24525006848032,
+      "fidelity_std": 0.0,
+      "cost": 0.004792012091938479,
+      "cost_std": 0.0,
+      "cost_per_bspans": 0.5018376502682635,
+      "cost_per_bspans_std": 0.0,
+      "seeds": 1,
+      "spans": 9548929,
+      "templates": 8647,
+      "edges": 142745
+    },
+    {
+      "N": 20000,
+      "fidelity": 88.98820821882046,
+      "fidelity_std": 0.0,
+      "cost": 0.009410431545268393,
+      "cost_std": 0.0,
+      "cost_per_bspans": 0.4885180953790899,
+      "cost_per_bspans_std": 0.0,
+      "seeds": 1,
+      "spans": 19263220,
+      "templates": 16542,
+      "edges": 175249
+    },
+    {
+      "N": 50000,
+      "fidelity": 89.36480809625401,
+      "fidelity_std": 0.0,
+      "cost": 0.022181747848445038,
+      "cost_std": 0.0,
+      "cost_per_bspans": 0.472675647729196,
+      "cost_per_bspans_std": 0.0,
+      "seeds": 1,
+      "spans": 46928053,
+      "templates": 38523,
+      "edges": 233215
+    }
+  ]
+}

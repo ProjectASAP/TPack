@@ -1,0 +1,64 @@
+
+============================================================
+  tpack_default  (otel-demo_tpack_default_1)
+============================================================
+  Fidelity scores: 440814 queries
+    duration      n=330231  mean=47.2  min=0.0  max=100.0
+    rate          n=110077  mean=67.1  min=0.0  max=100.0
+    error         n= 434  mean=95.9  min=0.0  max=100.0
+    graph         n=  35  mean=96.6  min=85.2  max=99.6
+    graph_binary  n=  35  mean=96.6  min=37.5  max=100.0
+    trace_rca     n=   1  mean=0.0  min=0.0  max=0.0
+    micro_rank    n=   1  mean=0.0  min=0.0  max=0.0
+  Cost breakdown (1 experiments):
+    size       769 KB
+    time       7.8 s (CPU)
+    cost       $0.0004
+
+============================================================
+  1:{rate} Head  (otel-demo_head_1_1)
+============================================================
+  Fidelity scores: 440814 queries
+    duration      n=330231  mean=100.0  min=100.0  max=100.0
+    rate          n=110077  mean=100.0  min=100.0  max=100.0
+    error         n= 434  mean=100.0  min=100.0  max=100.0
+    graph         n=  35  mean=100.0  min=100.0  max=100.0
+    graph_binary  n=  35  mean=100.0  min=100.0  max=100.0
+    trace_rca     n=   1  mean=0.0  min=0.0  max=0.0
+    micro_rank    n=   1  mean=0.0  min=0.0  max=0.0
+  Cost breakdown (3 experiments):
+    size       28.4 MB
+    time       0.8 s (CPU)
+    cost       $0.0028
+
+============================================================
+  1:{rate} Head  (otel-demo_head_3_1)
+============================================================
+  Fidelity scores: 440814 queries
+    duration      n=330231  mean=52.6  min=0.0  max=100.0
+    rate          n=110077  mean=45.0  min=0.0  max=100.0
+    error         n= 434  mean=21.0  min=0.0  max=100.0
+    graph         n=  35  mean=92.1  min=80.7  max=98.6
+    graph_binary  n=  35  mean=98.6  min=80.5  max=100.0
+    trace_rca     n=   1  mean=0.0  min=0.0  max=0.0
+    micro_rank    n=   1  mean=0.0  min=0.0  max=0.0
+  Cost breakdown (1 experiments):
+    size       22.7 MB
+    time       0.4 s (CPU)
+    cost       $0.0022
+
+============================================================
+  1:{rate} Head  (otel-demo_head_50_1)
+============================================================
+  Fidelity scores: 440814 queries
+    duration      n=330231  mean=8.8  min=0.0  max=100.0
+    rate          n=110077  mean=6.9  min=0.0  max=100.0
+    error         n= 434  mean=0.0  min=0.0  max=0.0
+    graph         n=  35  mean=59.9  min=0.0  max=91.7
+    graph_binary  n=  35  mean=79.3  min=12.3  max=99.4
+    trace_rca     n=   1  mean=0.0  min=0.0  max=0.0
+    micro_rank    n=   1  mean=0.0  min=0.0  max=0.0
+  Cost breakdown (2 experiments):
+    size       815 KB
+    time       0.0 s (CPU)
+    cost       $0.0001

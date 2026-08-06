@@ -1,0 +1,67 @@
+cff-version: 1.2.0
+title: "T-PACK: Structure-Aware Generative Compression for Efficient Distributed Tracing"
+message: "If you use TPack in your research, please cite the paper."
+license: MIT
+repository-code: "https://github.com/ProjectASAP/TPack"
+version: "0.1.0"
+date-released: "2026-05-08"
+keywords:
+  - observability
+  - opentelemetry
+  - distributed-tracing
+  - trace-compression
+  - generative-models
+authors:
+  - family-names: "Chin"
+    given-names: "Yen-Ru"
+    affiliation: "Carnegie Mellon University"
+    email: "yenruc@andrew.cmu.edu"
+  - family-names: "Srivastava"
+    given-names: "Milind"
+    affiliation: "Carnegie Mellon University"
+    email: "milindsr@andrew.cmu.edu"
+  - family-names: "Zhou"
+    given-names: "Yajie"
+    affiliation: "University of Maryland, College Park"
+    email: "leszhou@umd.edu"
+  - family-names: "Fanti"
+    given-names: "Giulia"
+    affiliation: "Carnegie Mellon University"
+    email: "gfanti@andrew.cmu.edu"
+  - family-names: "Sekar"
+    given-names: "Vyas"
+    affiliation: "Carnegie Mellon University"
+    email: "vsekar@andrew.cmu.edu"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.20088885"
+    description: "TPack: OpenTelemetry Demo trace dataset"
+preferred-citation:
+  type: conference-paper
+  title: "T-PACK: Structure-Aware Generative Compression for Efficient Distributed Tracing"
+  authors:
+    - family-names: "Chin"
+      given-names: "Yen-Ru"
+      affiliation: "Carnegie Mellon University"
+      email: "yenruc@andrew.cmu.edu"
+    - family-names: "Srivastava"
+      given-names: "Milind"
+      affiliation: "Carnegie Mellon University"
+      email: "milindsr@andrew.cmu.edu"
+    - family-names: "Zhou"
+      given-names: "Yajie"
+      affiliation: "University of Maryland, College Park"
+      email: "leszhou@umd.edu"
+    - family-names: "Fanti"
+      given-names: "Giulia"
+      affiliation: "Carnegie Mellon University"
+      email: "gfanti@andrew.cmu.edu"
+    - family-names: "Sekar"
+      given-names: "Vyas"
+      affiliation: "Carnegie Mellon University"
+      email: "vsekar@andrew.cmu.edu"
+  year: 2027
+  publisher:
+    name: "USENIX Association"
+  conference:
+    name: "22nd USENIX Symposium on Networked Systems Design and Implementation (NSDI '27)"

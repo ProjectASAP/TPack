@@ -1,0 +1,64 @@
+
+============================================================
+  tpack_default  (200000_tpack_default_1)
+============================================================
+  Fidelity scores: 148356 queries
+    duration      n=108528  mean=49.5  min=0.0  max=100.0
+    rate          n=36176  mean=89.9  min=0.0  max=100.0
+    error         n=3648  mean=82.3  min=0.0  max=100.0
+    graph         n=   1  mean=95.1  min=95.1  max=95.1
+    graph_binary  n=   1  mean=97.6  min=97.6  max=97.6
+    trace_rca     n=   1  mean=0.0  min=0.0  max=0.0
+    micro_rank    n=   1  mean=0.0  min=0.0  max=0.0
+  Cost breakdown (1 experiments):
+    size       20.8 MB
+    time       73.4 s (CPU)
+    cost       $0.0053
+
+============================================================
+  tpack_template  (200000_tpack_template_1)
+============================================================
+  Fidelity scores: 148356 queries
+    duration      n=108528  mean=59.3  min=0.0  max=100.0
+    rate          n=36176  mean=99.4  min=0.0  max=100.0
+    error         n=3648  mean=99.7  min=66.7  max=100.0
+    graph         n=   1  mean=99.1  min=99.1  max=99.1
+    graph_binary  n=   1  mean=100.0  min=100.0  max=100.0
+    trace_rca     n=   1  mean=0.0  min=0.0  max=0.0
+    micro_rank    n=   1  mean=0.0  min=0.0  max=0.0
+  Cost breakdown (1 experiments):
+    size       97.9 MB
+    time       284.0 s (CPU)
+    cost       $0.0222
+
+============================================================
+  1:{rate} Head  (200000_head_1_1)
+============================================================
+  Fidelity scores: 148356 queries
+    duration      n=108528  mean=100.0  min=100.0  max=100.0
+    rate          n=36176  mean=100.0  min=100.0  max=100.0
+    error         n=3648  mean=100.0  min=100.0  max=100.0
+    graph         n=   1  mean=100.0  min=100.0  max=100.0
+    graph_binary  n=   1  mean=100.0  min=100.0  max=100.0
+    trace_rca     n=   1  mean=0.0  min=0.0  max=0.0
+    micro_rank    n=   1  mean=0.0  min=0.0  max=0.0
+  Cost breakdown (3 experiments):
+    size       401.8 MB
+    time       23.1 s (CPU)
+    cost       $0.0403
+
+============================================================
+  1:{rate} Head  (200000_head_50_1)
+============================================================
+  Fidelity scores: 148356 queries
+    duration      n=108528  mean=51.5  min=0.0  max=100.0
+    rate          n=36176  mean=47.1  min=0.0  max=100.0
+    error         n=3648  mean=3.3  min=0.0  max=100.0
+    graph         n=   1  mean=75.3  min=75.3  max=75.3
+    graph_binary  n=   1  mean=51.3  min=51.3  max=51.3
+    trace_rca     n=   1  mean=0.0  min=0.0  max=0.0
+    micro_rank    n=   1  mean=0.0  min=0.0  max=0.0
+  Cost breakdown (2 experiments):
+    size       11.4 MB
+    time       1.0 s (CPU)
+    cost       $0.0012

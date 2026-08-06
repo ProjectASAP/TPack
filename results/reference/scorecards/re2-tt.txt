@@ -1,0 +1,46 @@
+Aggregating 90 reports
+
+============================================================
+  tpack_default  (RE2-TT_tpack_default_1)
+============================================================
+  Fidelity scores: 156988 queries
+    duration      n=114246  mean=80.2  min=0.0  max=100.0
+    rate          n=38082  mean=94.5  min=0.0  max=100.0
+    graph         n=2240  mean=95.5  min=51.5  max=100.0
+    graph_binary  n=2240  mean=97.4  min=78.5  max=100.0
+    trace_rca     n=  90  mean=63.3  min=0.0  max=100.0
+    micro_rank    n=  90  mean=60.0  min=0.0  max=100.0
+  Cost breakdown (90 experiments):
+    size       882 KB
+    time       2.6 s (CPU)
+    cost       $0.0002
+
+============================================================
+  1:{rate} Head  (RE2-TT_head_1_1)
+============================================================
+  Fidelity scores: 156988 queries
+    duration      n=114246  mean=100.0  min=100.0  max=100.0
+    rate          n=38082  mean=100.0  min=100.0  max=100.0
+    graph         n=2240  mean=100.0  min=100.0  max=100.0
+    graph_binary  n=2240  mean=100.0  min=100.0  max=100.0
+    trace_rca     n=  90  mean=75.6  min=0.0  max=100.0
+    micro_rank    n=  90  mean=66.7  min=0.0  max=100.0
+  Cost breakdown (270 experiments):
+    size       6.7 MB
+    time       0.3 s (CPU)
+    cost       $0.0007
+
+============================================================
+  1:{rate} Head  (RE2-TT_head_50_1)
+============================================================
+  Fidelity scores: 156988 queries
+    duration      n=114246  mean=81.9  min=0.0  max=100.0
+    rate          n=38082  mean=41.5  min=0.0  max=93.6
+    graph         n=2240  mean=17.5  min=0.0  max=70.7
+    graph_binary  n=2240  mean=33.1  min=0.0  max=73.9
+    trace_rca     n=  90  mean=28.9  min=0.0  max=100.0
+    micro_rank    n=  90  mean=37.8  min=0.0  max=100.0
+  Cost breakdown (180 experiments):
+    size       230 KB
+    time       0.0 s (CPU)
+    cost       $0.0000

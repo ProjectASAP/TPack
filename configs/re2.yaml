@@ -1,0 +1,10 @@
+name: tpack
+primary_attributes:
+  - service.name
+  - span.kind
+  - operation.name
+  - status.code
+  - method.name
+metadata_predictor: statistical
+offset_value: ratio
+offset_model: regression
